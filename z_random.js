@@ -109,6 +109,8 @@ const frequent = [
   "sole", "visualize", "clarify", "zebra", "realize", "bulk", "cease", "coherence", "converse", "distort", "mutual", "refine", "relax",
 ]
 
+word_count = 0;
+
 function getOutput() {
   let output = "";
 
@@ -122,9 +124,11 @@ function getOutput() {
     if ((i & 1) == 0) {
       output += frequent.splice(word, 1);
       output += " ";
+      word_count += 1;
     }
     output += home.splice(prefix, 1);
     output += " ";
+    word_count += 2;
   }
   return output;
 }
@@ -138,20 +142,38 @@ inputField = document.getElementById('user-input');
 inputField.value = "";
 inputField.focus();
 
+user_typing = false;
+time_start = 0;
+total_time = 0;
+
 document.getElementById('reset-button').addEventListener('click', () => {
-  outputHTML.innerText = getOutput();
   location.reload();
 });
 
 inputField.addEventListener('input', () => {
+  if (user_typing == false) {
+    user_typing = true;
+    time_start = performance.now();
+  }
   text = inputField.value;
   let i = 0;
+
+  last = text.length - 1;
+
+  if (text.length == output.length && output[last] == text[last]) {
+    total_time = (performance.now() - time_start) / 60_000;
+    document.getElementById('title').innerText = "Words per Minute: " + ~~(word_count / total_time);
+    return;
+  }
+
   while (i < text.length) {
     if (text[i] != output[i]) {
       inputField.classList.add('red-font');
+      outputHTML.classList.add('red-font');
       break;
     } else {
       inputField.classList.remove('red-font');
+      outputHTML.classList.remove('red-font');
     }
     i += 1;
   }
