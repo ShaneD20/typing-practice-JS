@@ -1,0 +1,38 @@
+body {
+    background: #333;
+    display: grid;
+    color: #fff;
+    font-family: "Courier New";
+    place-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+header {
+    display: flex;
+    place-items: center;
+}
+
+#reset-button {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    height: 2rem;
+    width: 6rem;
+}
+
+.text-mirror {
+    /* position: fixed; */
+    background: inherit;
+    color: inherit;
+    border: none;
+    font-family: "Courier New";
+    width: 800px;
+    height: 200px;
+    font-size: 1.5rem;
+}
+
+#user-input {}
+
+.red-font {
+    color: red;
+}
