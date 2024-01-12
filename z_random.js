@@ -1,3 +1,6 @@
+// ctrl+f : Application Code to see how application runs.
+// arrays of words and charactrers to type.
+
 const flowToHome = [
   "1fds", "!fds", "f1da", "f!da", "f1ds", "f!ds", "sd1f", "sd!f",
   "@fas", "2fsa", "a2fd", "a@df", "f@as", "f2ad", "df2a", "df@a",
@@ -109,6 +112,8 @@ const frequent = [
   "sole", "visualize", "clarify", "zebra", "realize", "bulk", "cease", "coherence", "converse", "distort", "mutual", "refine", "relax",
 ]
 
+/* Application Code */
+
 word_count = 0;
 
 function getOutput() {
@@ -130,10 +135,10 @@ function getOutput() {
     output += " ";
     word_count += 2;
   }
+  output = output.slice(0, output.length - 1);
   return output;
 }
 
-// Application Code
 outputHTML = document.getElementById('practice-content');
 output = getOutput();
 outputHTML.innerText = output;
@@ -160,9 +165,14 @@ inputField.addEventListener('input', () => {
 
   last = text.length - 1;
 
+  // when user completes text input
   if (text.length == output.length && output[last] == text[last]) {
     total_time = (performance.now() - time_start) / 60_000;
-    document.getElementById('title').innerText = "Words per Minute: " + ~~(word_count / total_time);
+    wordsPerMinuteX10 = ~~(10 * (word_count / total_time));
+    document.getElementById('title').innerText = "Words per Minute: " + (wordsPerMinuteX10 / 10);
+    document.getElementById('reset-button').focus();
+    inputField.classList.add('green-font');
+    outputHTML.classList.add('green-font');
     return;
   }
 

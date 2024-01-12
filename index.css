@@ -31,8 +31,11 @@ header {
     font-size: 1.5rem;
 }
 
-#user-input {}
 
 .red-font {
     color: red;
+}
+
+.green-font {
+    color: lightseagreen;
 }
