@@ -28,9 +28,13 @@ const flowToHome = [
   "srad", "lu;k", "ij;l", "pklj", "j<l;", "<jl;", ">jl;",
   "jk>;", ";l<j", ";>kj", "kl?j", "o;kj", "il;j", "u;lk", "hlkj",
   "j_kl", "j=kl", "j-kl", "j+kl", "k_jl", "k-jl", "k+jl", "k=jl",
+  "\"lkj", "\"jkl", "\"kjl", "\'lkj", "\'jkl", "\'kjl",
+  "{jkl", "j{kl", "{lkj", "jk{l", "[jkl", "j[kl", "[ljk", "jk[l",
+
+  // omitted ] } \ | (too much of a jump for good habits...)
 ]
 
-const home = [
+const triplets = [
   "gad", "gsd", "gds", "fad", "fsd", "fds", "h;k", "hkl", "hlk", "j;k", "j;l", "jk;",
   "rad", "rsd", "rds", "vad", "vsd", "vds", "u;k", "ulk", "ukl", "m;k", "mlk", "mk;",
   "tad", "tsd", "tds", "bad", "bsd", "bds", "y;k", "ylk", "ykl", "n;k", "nlk", "nkl",
@@ -45,6 +49,8 @@ const home = [
   "1gd", "2gd", "3gs", "4ds", "5ds", "6kl", "7kl", "8hl", "9hk", "0hk", ">k", ">j", "<l", "<j",
   "qgd", "wgd", "egs", "fds", "tds", "ykl", "ukl", "ihl", "ohk", "phk", "?jl", "?kl", "?lj",
   "zgd", "xgd", "cgs", "vds", "bds", "nkl", "mkl", ",hl", ".hk", "/hk", "<hl", ">hk", "?hk",
+  // omitted ] } \ | (too much of a jump for good habits...)
+  // ommited 
 ]
 
 const frequent = [
@@ -114,15 +120,15 @@ const frequent = [
 
 /* Application Code */
 
-word_count = 0;
+word_count = 3; // 3 phrases added out of for loop
 
 function getOutput() {
   let output = "";
 
   for (let i = 0; i < 28; i += 1) {
-    const index = ~~(flowToHome.length * Math.random());
-    const prefix = ~~(home.length * Math.random());
-    const word = ~~(frequent.length * Math.random());
+    const index = Math.floor(flowToHome.length * Math.random());
+    const point = Math.floor(triplets.length * Math.random());
+    const word = Math.floor(frequent.length * Math.random());
 
     output += flowToHome.splice(index, 1);
     output += " ";
@@ -131,48 +137,46 @@ function getOutput() {
       output += " ";
       word_count += 1;
     }
-    output += home.splice(prefix, 1);
+    output += triplets.splice(point, 1);
     output += " ";
     word_count += 2;
   }
-  output = output.slice(0, output.length - 1);
+  const word = Math.floor(frequent.length * Math.random());
+  output += "fds " + frequent[word] + " jkl";
   return output;
 }
-
-outputHTML = document.getElementById('practice-content');
-output = getOutput();
+const wordsPerMinute = document.querySelector(".words-per-minute")
+const outputHTML = document.getElementById('practice-content');
+const output = getOutput();
 outputHTML.innerText = output;
 
-inputField = document.getElementById('user-input');
+const inputField = document.getElementById('user-input');
 inputField.value = "";
 inputField.focus();
 
-user_typing = false;
-time_start = 0;
-total_time = 0;
+let user_typing = false;
+let time_start = 0;
+let total_time = 0;
 
-document.getElementById('reset-button').addEventListener('click', () => {
-  location.reload();
-});
+document.getElementById('reset-button').addEventListener('click', () => location.reload());
 
 inputField.addEventListener('input', () => {
-  if (user_typing == false) {
+  let i = 0;
+  if (user_typing === false) {
     user_typing = true;
     time_start = performance.now();
   }
-  text = inputField.value;
-  let i = 0;
+  const text = inputField.value;
+  const last = text.length - 1;
 
-  last = text.length - 1;
-
-  // when user completes text input
-  if (text.length == output.length && output[last] == text[last]) {
+  // when user completes text
+  if (text.length === output.length && output[last] === text[last]) {
     total_time = (performance.now() - time_start) / 60_000;
-    wordsPerMinuteX10 = ~~(10 * (word_count / total_time));
+    const wordsPerMinuteX10 = Math.floor(10 * (word_count / total_time));
     document.getElementById('title').innerText = "Words per Minute: " + (wordsPerMinuteX10 / 10);
-    document.getElementById('reset-button').focus();
     inputField.classList.add('green-font');
     outputHTML.classList.add('green-font');
+    document.getElementById('reset-button').focus();
     return;
   }
 
