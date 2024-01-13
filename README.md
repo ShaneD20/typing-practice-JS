@@ -1,5 +1,5 @@
 # QWERTY Practice
-[https://qwerty-practice.netlify.app/] You can use the web app here.
+[QWERTY Practice on Netlify](https://qwerty-practice.netlify.app/) You can use the web app here.
 
 ## The Problem
 While coding on QWERTY keyboards, I realized that my right hand would frequently drift leaving my right wrist at odd angles. Some of the issues were that the right hand has to type all bracket and parenthesis, the right hand is responsible for +,  =, -, |, \, and _. 
