@@ -1,0 +1,28 @@
+body {
+    background: #333;
+    display: grid;
+    color: #fff;
+    font-family: "Courier New";
+    place-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+header {
+    margin: 1rem;
+    margin-bottom: 0px;
+    display: flex;
+    place-items: center;
+}
+
+a:link {
+    color: inherit;
+}
+
+a:visited {
+    color: #ddd;
+}
+
+a:hover {
+    font-weight: bold;
+}

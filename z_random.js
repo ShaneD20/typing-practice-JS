@@ -1,6 +1,6 @@
 // ctrl+f : Application Code to see how application runs.
-// arrays of words and charactrers to type.
 
+// arrays of words and charactrers to type.
 const flowToHome = [
   "1fds", "!fds", "f1da", "f!da", "f1ds", "f!ds", "sd1f", "sd!f",
   "@fas", "2fsa", "a2fd", "a@df", "f@as", "f2ad", "df2a", "df@a",
@@ -30,7 +30,6 @@ const flowToHome = [
   "j_kl", "j=kl", "j-kl", "j+kl", "k_jl", "k-jl", "k+jl", "k=jl",
   "\"lkj", "\"jkl", "\"kjl", "\'lkj", "\'jkl", "\'kjl",
   "{jkl", "j{kl", "{lkj", "jk{l", "[jkl", "j[kl", "[ljk", "jk[l",
-
   // omitted ] } \ | (too much of a jump for good habits...)
 ]
 
@@ -49,22 +48,20 @@ const triplets = [
   "1gd", "2gd", "3gs", "4ds", "5ds", "6kl", "7kl", "8hl", "9hk", "0hk", ">k", ">j", "<l", "<j",
   "qgd", "wgd", "egs", "fds", "tds", "ykl", "ukl", "ihl", "ohk", "phk", "?jl", "?kl", "?lj",
   "zgd", "xgd", "cgs", "vds", "bds", "nkl", "mkl", ",hl", ".hk", "/hk", "<hl", ">hk", "?hk",
-  // omitted ] } \ | (too much of a jump for good habits...)
-  // ommited 
+  // omitted [ ]  { } \ | (too much of a jump for good habits...)
 ]
 
 const frequent = [
-  // programming keywords
+  // misc programming common words
   "build", "specify", "from", "repeat", "unless", "until", "give", "function", "method", "exists", "assert", "define",
-  "always", "share", "export", "import", "include", "package", "protect", "self", "xor", "await", "void", "either", "global",
-  "construct", "variable", "filter", "fold", "data", "module", "value", "array", "bind", "with", "yield", "none", "except",
-  "each", "call", "list", "when", "hold", "defer", "set", "redo", "text", "transfer", "and", "or", "as", "for", "by", "in",
-  "this", "do", "maximum", "minimum", "integer", "reference",
-  //c++ keywords
-  "abstract", "base", "break", "byte", "case", "catch", "character", "checked", "constant", "continue", "decimal", "default",
-  "delegate", "enumerate", "event", "explicit", "external", "false", "finally", "fixed", "float", "implicit", "interface",
-  "internal", "lock", "name", "type", "safe", "virtual", "object", "operator", "private", "protected", "public", "read",
-  "return", "sealed", "size", "stack", "allocate", "static", "string", "structure", "switch", "throw", "try", "volatile",
+  "always", "share", "export", "import", "include", "package", "protect", "self", "xor", "await", "void", "either", "in",
+  "construct", "variable", "filter", "fold", "data", "module", "value", "array", "bind", "with", "yield", "none", "by",
+  "each", "call", "list", "when", "hold", "defer", "set", "redo", "text", "transfer", "and", "or", "as", "for", "except",
+  "this", "do", "maximum", "minimum", "integer", "reference", "return", "string", "continue", "false", "global",
+  "abstract", "base", "break", "byte", "case", "catch", "character", "checked", "constant", "decimal", "default",
+  "delegate", "enumerate", "event", "explicit", "external", "finally", "fixed", "float", "implicit", "interface",
+  "internal", "lock", "name", "type", "safe", "virtual", "object", "operator", "private", "protected", "public",
+  "sealed", "size", "stack", "allocate", "static", "structure", "switch", "throw", "try", "volatile", "read",
   //SQL commands
   "create", "alter", "drop", "truncate", "rename", "insert", "update", "delete", "merge", "grant", "revoke", "commit", "select", "rollback",
   "inner", "outer", "left", "right", "full", "between", "group", "order", "having", "count",
@@ -146,6 +143,7 @@ function getOutput() {
   word_count += 3;
   return output;
 }
+
 const wordsPerMinute = document.querySelector(".words-per-minute")
 const outputHTML = document.getElementById('practice-content');
 const output = getOutput();
@@ -182,6 +180,7 @@ inputField.addEventListener('input', () => {
     return;
   }
 
+  // as user is entering text
   while (i < text.length) {
     if (text[i] != output[i]) {
       inputField.classList.add('red-font');
