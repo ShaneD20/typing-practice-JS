@@ -14,7 +14,7 @@ If I and O were never used for numbers I can imagine the keys [ U, I, O, P ] swa
 ## The Idea
 I thought back on how I had learned touch-typing, some of the patterns were useful, others were uninspired patterns. AQAZ, SWSX, DEDC, …repeating the same finger is frequently not something users perform on a keyboard (except for words like “call”, “pizza”, and “Mississippi”). If I made a typing application that would rehearse getting both the left and right hands back to their home rows, while stretching for special characters, would my right hand improve?
 
-The theory was if phrases of 3 or 4 characters used characters with one for each finger, would my hand movement improve?
+The theory became more specific by asking, "if phrases of 3 or 4 characters used characters with one for each finger, would my hand movement improve?"
 
 The process started with trial and error, I had moments where all the patterns were improving my typing speed or typing comfort. While other times some patterns were found to be unhelpful. For example, I had to choose to omit  |, \, }, and ] to keep in line with the vision of the right hand flowing naturally with it’s home row. Later I added in common English words as well as keywords for programming languages.
 
