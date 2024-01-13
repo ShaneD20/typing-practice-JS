@@ -120,7 +120,7 @@ const frequent = [
 
 /* Application Code */
 
-word_count = 3; // 3 phrases added out of for loop
+word_count = 0; // 3 phrases added out of loop
 
 function getOutput() {
   let output = "";
@@ -143,6 +143,7 @@ function getOutput() {
   }
   const word = Math.floor(frequent.length * Math.random());
   output += "fds " + frequent[word] + " jkl";
+  word_count += 3;
   return output;
 }
 const wordsPerMinute = document.querySelector(".words-per-minute")
@@ -155,6 +156,7 @@ inputField.value = "";
 inputField.focus();
 
 let user_typing = false;
+let no_errors = true;
 let time_start = 0;
 let total_time = 0;
 
@@ -170,7 +172,7 @@ inputField.addEventListener('input', () => {
   const last = text.length - 1;
 
   // when user completes text
-  if (text.length === output.length && output[last] === text[last]) {
+  if (text.length === output.length && no_errors && output[last] === text[last]) {
     total_time = (performance.now() - time_start) / 60_000;
     const wordsPerMinuteX10 = Math.floor(10 * (word_count / total_time));
     document.getElementById('title').innerText = "Words per Minute: " + (wordsPerMinuteX10 / 10);
@@ -184,10 +186,12 @@ inputField.addEventListener('input', () => {
     if (text[i] != output[i]) {
       inputField.classList.add('red-font');
       outputHTML.classList.add('red-font');
+      no_errors = false;
       break;
     } else {
       inputField.classList.remove('red-font');
       outputHTML.classList.remove('red-font');
+      no_errors = true;
     }
     i += 1;
   }
