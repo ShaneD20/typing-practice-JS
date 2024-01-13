@@ -1,6 +1,6 @@
 // ctrl+f : Application Code to see how application runs.
 
-// arrays of words and charactrers to type.
+// arrays of words and characters to type.
 const flowToHome = [
   "1fds", "!fds", "f1da", "f!da", "f1ds", "f!ds", "sd1f", "sd!f",
   "@fas", "2fsa", "a2fd", "a@df", "f@as", "f2ad", "df2a", "df@a",
@@ -115,48 +115,44 @@ const frequent = [
   "sole", "visualize", "clarify", "zebra", "realize", "bulk", "cease", "coherence", "converse", "distort", "mutual", "refine", "relax",
 ]
 
-/* Application Code */
+/* Application Code : snake_case for global variables */
 
-word_count = 0; // 3 phrases added out of loop
+let user_typing = false;
+let no_errors = true;
+let time_start = 0;
+let word_count = 0;
 
-function getOutput() {
-  let output = "";
+function getPrompt() {
+  let user_prompt = "";
 
   for (let i = 0; i < 28; i += 1) {
     const index = Math.floor(flowToHome.length * Math.random());
     const point = Math.floor(triplets.length * Math.random());
     const word = Math.floor(frequent.length * Math.random());
 
-    output += flowToHome.splice(index, 1);
-    output += " ";
+    user_prompt += flowToHome.splice(index, 1);
+    user_prompt += " ";
     if ((i & 1) == 0) {
-      output += frequent.splice(word, 1);
-      output += " ";
+      user_prompt += frequent.splice(word, 1);
+      user_prompt += " ";
       word_count += 1;
     }
-    output += triplets.splice(point, 1);
-    output += " ";
+    user_prompt += triplets.splice(point, 1);
+    user_prompt += " ";
     word_count += 2;
   }
   const word = Math.floor(frequent.length * Math.random());
-  output += "fds " + frequent[word] + " jkl";
+  user_prompt += "fds " + frequent[word] + " jkl";
   word_count += 3;
-  return output;
+  return user_prompt;
 }
-
-const wordsPerMinute = document.querySelector(".words-per-minute")
 const outputHTML = document.getElementById('practice-content');
-const output = getOutput();
+const inputField = document.getElementById('user-input');
+const output = getPrompt();
 outputHTML.innerText = output;
 
-const inputField = document.getElementById('user-input');
 inputField.value = "";
 inputField.focus();
-
-let user_typing = false;
-let no_errors = true;
-let time_start = 0;
-let total_time = 0;
 
 document.getElementById('reset-button').addEventListener('click', () => location.reload());
 
@@ -171,8 +167,8 @@ inputField.addEventListener('input', () => {
 
   // when user completes text
   if (text.length === output.length && no_errors && output[last] === text[last]) {
-    total_time = (performance.now() - time_start) / 60_000;
-    const wordsPerMinuteX10 = Math.floor(10 * (word_count / total_time));
+    const totalTime = (performance.now() - time_start) / 60_000;
+    const wordsPerMinuteX10 = Math.floor(10 * (word_count / totalTime));
     document.getElementById('title').innerText = "Words per Minute: " + (wordsPerMinuteX10 / 10);
     inputField.classList.add('green-font');
     outputHTML.classList.add('green-font');
