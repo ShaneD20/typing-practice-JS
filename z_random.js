@@ -14,13 +14,21 @@ const flowToHome = [
   ";k7l", ";k&l", ";&lk", ";7lk", "l7;k", "l&;k",
   ";^lk", ";^kl", "l^;k", ";6lk", ";6kl", "l6;k",
 
-  "asdf", "zsdf", "qsdf", "axdf", "awdf", "ascf", "asef", "fdsa",
-  "fdzs", "fdqs", "rdsa", "fdwa", "fcsa", "fesa", "asvd", "stda",
-  "absd", "qdsf", "fzds", "wadf", "esaf", "rasd", "gasf",
+  "asdf", "zsdf", "qsdf", "axdf", "awdf", "ascf", "asef",
+  "dasf", "dzsf", "dqsf", "dxaf", "dwaf", "afcs", "afes",
+  "fdsa", "fdzs", "fdqs", "fdxa", "fdwa", "fcsa", "fesa",
+  "fsda", "fszd", "fqsd", "xafd", "wafd", "csaf", "esaf",
+  "sgda", "geas", "gcas", "gdzs", "gdqs", "gdwa", "gdxa",
+  "srda", "rdsa", "rsda", "drsa", "ards", "rdas", "rsad",
+  "svda", "vdsa", "vsda", "dvsa", "avds", "vdas", "vsad",
+  "stda", "tdsa", "tsda", "dtsa", "atds",
+  "sbda", "bdsa", "bsda", "dbsa", "abds",
+  "~fsd", "~dsf", "~sdf", "~fes", "~efs",
+  "`fsd", "`dsf", "`sdf", "`fes", "`efs",
 
-  ":jkl", "Asdf", "Basd", "Casf", "Dfsa", "Easf", "Fdsa", "Gasf", "Hkl;",
+  ":jkl", "Asdf", "Basd", "Casf", "Dfsa", "Easf", "Fdsa", "Gasd", "H;lk",
   "?lkj", "Ijl;", "Jkl;", "Lkj;", "Mkl;", "Nkl;", "O;kj", "Plkj", "Qsdf",
-  "Rdsa", "Sqfd", "Tasd", "U;lk", "Vasd", "Wadf", "Xadf", "Ykl;", "Zsdf",
+  "Rasd", "Sqfd", "Tasd", "U;lk", "Vasd", "Wadf", "Xadf", "Ykl;", "Zsdf",
 
   ";lkj", "/lkj", "plkj", ";.kj", ";okj", ";l,j", ";lij", "jkl;",
   "jk/l", "jkpl", "ukl;", "nkl;", "jk.;", "jko;", "jk(;", "j,l;",
@@ -30,6 +38,9 @@ const flowToHome = [
   "j_kl", "j=kl", "j-kl", "j+kl", "k_jl", "k-jl", "k+jl", "k=jl",
   "\"lkj", "\"jkl", "\"kjl", "\'lkj", "\'jkl", "\'kjl",
   "{jkl", "j{kl", "{lkj", "jk{l", "[jkl", "j[kl", "[ljk", "jk[l",
+  "lhk;", "hkl;", "hlk;", "khl;", ";hkl",
+  "lyk;", "ykl;", "ylk;", "kyl;", ";ykl",
+  "lnk;", "nkl;", "nlk;", "knl;", ";nkl",
   // omitted ] } \ | (too much of a jump for good habits...)
 ]
 
@@ -48,7 +59,8 @@ const triplets = [
   "1gd", "2gd", "3gs", "4ds", "5ds", "6kl", "7kl", "8hl", "9hk", "0hk", ">k", ">j", "<l", "<j",
   "qgd", "wgd", "egs", "fds", "tds", "ykl", "ukl", "ihl", "ohk", "phk", "?jl", "?kl", "?lj",
   "zgd", "xgd", "cgs", "vds", "bds", "nkl", "mkl", ",hl", ".hk", "/hk", "<hl", ">hk", "?hk",
-  // omitted [ ]  { } \ | (too much of a jump for good habits...)
+  "~fs", "~fd", "~df", "~sf", "`fs", "`fd", "`df", "`sf",
+  // omitted [ ]  { } \ | (to slightly better balance work for left and right)
 ]
 
 const frequent = [
@@ -121,11 +133,12 @@ let user_typing = false;
 let no_errors = true;
 let time_start = 0;
 let word_count = 0;
+const iterations = 28;
 
 function getPrompt() {
   let user_prompt = "";
 
-  for (let i = 0; i < 28; i += 1) {
+  for (let i = 0; i < iterations; i += 1) {
     const index = Math.floor(flowToHome.length * Math.random());
     const point = Math.floor(triplets.length * Math.random());
     const word = Math.floor(frequent.length * Math.random());
