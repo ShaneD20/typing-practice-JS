@@ -3,7 +3,7 @@
 You can use the web app here.
 
 ## The Problem
-While coding on QWERTY keyboards, I realized that my right hand would frequently drift leaving my right wrist at odd angles. Some of the issues were that the right hand has to type all bracket and parenthesis, the right hand is responsible for +,  =, -, |, \, and _. 
+While coding on QWERTY keyboards, I realized that my right hand would frequently drift leaving my right wrist at odd angles. Some of the issues are: that the right hand has to type all bracket and parenthesis, the right hand is responsible for +,  =, -, |, \, and _, the right hand is responsible for new lines, delete, or backspace.
 
 At first I thought it would be great if keyboards had open bracket and open parenthesis tied to the left hand. Imagine a key between tab and Q for [ and {, a key to the left of A for < and , etc. However, I started to read into what could make a good keyboard layout. There are a lot of good discussions on whether Colemak or Dvorak would be better. But frequently typing competitions show QWERTY is still an effective layout. Which raised the question, why are so many comfortable and dexterous with QWERTY? But some struggle with wrist or finger strain?
 
