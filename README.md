@@ -25,7 +25,7 @@ I chose to go with a simple UI where the user could clearly see the typing promp
 
 The font turns red when an error has occurred and green when the prompt is completed. The user can reload the page, or use the reset button to get another prompt. At the end, the user gets to see their typing speed. (With how difficult traversing this many characters can be, I’d say 25 words / minute is “good”, 35+ is “great”, and 50+ or higher is “phenomenal”). 
 
-The prompt is intended to a fixed length, something that could be completed in under 5 minutes. But longer than the average length of 3 sentences. Users are free to quickly start and attempt a randomized prompt at their leisure.
+The prompt is a fixed length, something that could be completed in under 5 minutes. But longer than the average length of 3 sentences. Users are free to quickly start and attempt a randomized prompt at their leisure.
 
 ## For Future
 I would really like to create pages for alternative keyboard layouts such as AZERTY or Colemak. As well as common words for different languages, toggled by user input. Currently the project is at a good point of completion and I will be happy to revisit these ideas in the future.
